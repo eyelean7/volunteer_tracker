@@ -31,15 +31,23 @@ describe(Project) do
     end
   end
 
-  describe('#update_project') do
-    it ("updates the project's information in the database") do
-      project = Project.new({:name => "Meals on Wheels"})
+  describe('#==') do
+    it("returns true if projects have the same name and id") do
       project.save()
-      project.update_project({:name => "Feed the Children"})
-      project = Project.find(project.id())
-      expect(project.name()).to(eq("Feed the Children"))
+      project2 = Project.find(project.id())
+      expect(project).to eq(project2)
     end
   end
+
+  # describe('#volunteers') do
+  #   it ("lists volunteers working on project") do
+  #     project = Project.new({:name => "Meals on Wheels"})
+  #     project.save()
+  #     volunteer = Volunteer.new({:first_name => "Ilene", :last_name => "Gorski", :project_id => project.id()})
+  #     volunteer.save()
+  #     expect(project.volunteers()).to eq(["Ilene Gorski"])
+  #   end
+  # end
 
   describe('#delete_project') do
     it ("deletes a project") do

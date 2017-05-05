@@ -25,7 +25,7 @@ describe('volunteer_tracker', {:type => :feature}) do
     click_link('Feed the Children')
     expect(page).to have_content('Project: Feed the Children')
     fill_in('name', :with => 'Meals on Wheels')
-    click_button('Update project information')
+    click_button('Update project name')
     click_button('Submit')
     expect(page).to have_content('Project: Meals on Wheels')
   end
@@ -48,7 +48,7 @@ describe('volunteer_tracker', {:type => :feature}) do
     click_button('Submit')
     click_link('Ilene Gorski')
     expect(page).to have_content('Volunteer: Ilene Gorski')
-    click_button('Update volunteer information')
+    click_button('Update volunteer name')
     fill_in('first_name', :with => 'Eileen')
     fill_in('last_name', :with => 'Gorski')
     click_button('Submit')

@@ -32,6 +32,18 @@ describe(Volunteer) do
     end
   end
 
+  describe('#add_project') do
+    it ("adds a project id in the volunteer table") do
+      volunteer = Volunteer.new({:first_name => "Ilene", :last_name => "Gorski"})
+      volunteer.save()
+      project = Project.new({:name => "Feed the Children"})
+      project.save()
+binding.pry
+      volunteer.add_project(project.id().to_i())
+      expect(volunteer.project_id()).to(eq(project.id()))
+    end
+  end
+
   describe('#update_volunteer') do
     it ("updates the volunteer's information in the database") do
       volunteer = Volunteer.new({:first_name => "Eileen", :last_name => "Gorski"})

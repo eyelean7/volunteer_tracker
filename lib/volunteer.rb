@@ -21,6 +21,10 @@ class Volunteer
     self.name().==(another_volunteer.name()).&(self.id().==(another_volunteer.id()))
   end
 
+  def add_project(attributes)
+    DB.exec("UPDATE volunteers SET project_id = 1 WHERE id = #{self.id()};")
+  end
+
   def update_volunteer(attributes)
     DB.exec("UPDATE volunteers SET first_name = '#{attributes[:first_name]}', last_name = '#{attributes[:last_name]}' WHERE id = #{self.id()};")
   end
