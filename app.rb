@@ -29,3 +29,11 @@ end
 get('/volunteers') do
   erb(:volunteers)
 end
+
+post('/volunteers') do
+  # name = params.fetch("name")
+  # volunteer = Volunteer.new({:name => name, :id => nil})
+  # volunteer.save()
+  # @volunteers = Volunteer.all()
+  erb(:volunteers)
+end

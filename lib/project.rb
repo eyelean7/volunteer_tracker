@@ -16,7 +16,7 @@ class Project
   def ==(another_project)
     self.name().==(another_project.name()).&(self.id().==(another_project.id()))
   end
-  
+
   class << self
     def all
       all_projects = DB.exec('SELECT * FROM projects ORDER BY name;')
@@ -29,5 +29,16 @@ class Project
       end
       return saved_projects
     end
+
+    def find(id)
+      found_project = nil
+      Project.all().each() do |project|
+        if project.id() == id
+          found_project = project
+        end
+      end
+      return found_project
+    end
+
   end
 end
