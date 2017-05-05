@@ -21,10 +21,10 @@ _The Vocab app allows the user to enter a word and its definition. The user may 
 * _In terminal, type the following commands_
 * _'pg_ctl start'_
 * _'postgres'_
-* _CREATE DATABASE volunteer_tracker;_
-* _\c volunteer_tracker_
-* _CREATE TABLE projects(id serial PRIMARY KEY, name varchar);_
-* _CREATE TABLE volunteers(id serial PRIMARY KEY, first_name varchar, last_name varchar, project_id int);_
+* _'CREATE DATABASE volunteer_tracker;'_
+* _'\c volunteer_tracker'_
+* _'CREATE TABLE projects(id serial PRIMARY KEY, name varchar);'_
+* _'CREATE TABLE volunteers(id serial PRIMARY KEY, first_name varchar, last_name varchar, project_id int);'_
 * _Return to original terminal window, navigate to the volunteer_tracker folder and run 'bundle install'_
 * _While still in the project folder, run 'ruby app.rb'_
 * _Open Google Chrome and type in 'http://localhost:4567/' in the address bar_
