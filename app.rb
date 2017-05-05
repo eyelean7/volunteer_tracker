@@ -14,6 +14,15 @@ get('/') do
 end
 
 get('/projects') do
+  @projects = Project.all()
+  erb(:projects)
+end
+
+post('/projects') do
+  name = params.fetch("name")
+  project = Project.new({:name => name, :id => nil})
+  project.save()
+  @projects = Project.all()
   erb(:projects)
 end
 
