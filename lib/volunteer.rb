@@ -1,5 +1,5 @@
 class Volunteer
-  attr_accessor(:first_name, :last_name)
+  attr_accessor(:first_name, :last_name, :project_id)
   attr_reader(:id)
 
   def initialize(attributes)
