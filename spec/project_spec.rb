@@ -31,6 +31,25 @@ describe(Project) do
     end
   end
 
+  describe('#update_project') do
+    it ("updates the project's information in the database") do
+      project = Project.new({:name => "Meals on Wheels"})
+      project.save()
+      project.update_project({:name => "Feed the Children"})
+      project = Project.find(project.id())
+      expect(project.name()).to(eq("Feed the Children"))
+    end
+  end
+
+  describe('#delete_project') do
+    it ("deletes a project") do
+      project = Project.new({:name => "Meals on Wheels"})
+      project.save()
+      project.delete_project()
+      expect(Project.all()).to eq([])
+    end
+  end
+
   describe('.all') do
     it "returns all projects" do
       project.save()

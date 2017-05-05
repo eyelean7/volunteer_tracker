@@ -23,12 +23,31 @@ describe(Volunteer) do
       # expect(name).to eq("Ilene Gorski")
     end
   end
-  
+
   describe('#==') do
     it("returns true if volunteers have the same name and id") do
       volunteer.save()
       volunteer2 = Volunteer.find(volunteer.id())
       expect(volunteer).to eq(volunteer2)
+    end
+  end
+
+  describe('#update_volunteer') do
+    it ("updates the volunteer's information in the database") do
+      volunteer = Volunteer.new({:first_name => "Eileen", :last_name => "Gorski"})
+      volunteer.save()
+      volunteer.update_volunteer({:first_name => "Ilene", :last_name => "Gorski"})
+      volunteer = Volunteer.find(volunteer.id())
+      expect(volunteer.name()).to(eq("Ilene Gorski"))
+    end
+  end
+
+  describe('#delete_volunteer') do
+    it ("deletes a volunteer") do
+      volunteer = Volunteer.new({:first_name => "Ilene", :last_name => "Gorski"})
+      volunteer.save()
+      volunteer.delete_volunteer()
+      expect(Volunteer.all()).to eq([])
     end
   end
 

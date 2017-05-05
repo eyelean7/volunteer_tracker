@@ -21,6 +21,15 @@ class Volunteer
     self.name().==(another_volunteer.name()).&(self.id().==(another_volunteer.id()))
   end
 
+  def update_volunteer(attributes)
+    DB.exec("UPDATE volunteers SET first_name = '#{attributes[:first_name]}', last_name = '#{attributes[:last_name]}' WHERE id = #{self.id()};")
+  end
+
+  def delete_volunteer
+    DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
+    # DB.exec("DELETE FROM stops WHERE project_id = #{self.id()};")
+  end
+
   class << self
     def all
       all_volunteers = DB.exec('SELECT * FROM volunteers ORDER BY last_name;')

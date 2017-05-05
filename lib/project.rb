@@ -17,6 +17,15 @@ class Project
     self.name().==(another_project.name()).&(self.id().==(another_project.id()))
   end
 
+  def update_project(attributes)
+    DB.exec("UPDATE projects SET name = '#{attributes[:name]}' WHERE id = #{self.id()};")
+  end
+
+  def delete_project
+  DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
+  # DB.exec("DELETE FROM stops WHERE project_id = #{self.id()};")
+end
+
   class << self
     def all
       all_projects = DB.exec('SELECT * FROM projects ORDER BY name;')
