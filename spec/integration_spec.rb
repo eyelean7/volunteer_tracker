@@ -14,11 +14,19 @@ describe('projects', {:type => :feature}) do
     fill_in('name', :with => 'Feed the Children')
     click_button('Submit')
     expect(page).to have_content('Feed the Children')
+    click_link('Go Home')
+    expect(page).to have_content('What would you like to do?')
   end
   it "goes to the volunteers page when its button is clicked" do
     visit('/')
     click_link('Go to volunteers page')
     expect(page).to have_content('Add a volunteer')
+    fill_in('first_name', :with => 'Ilene')
+    fill_in('last_name', :with => 'Gorski')
+    click_button('Submit')
+    expect(page).to have_content('Ilene Gorski')
+    click_link('Go Home')
+    expect(page).to have_content('What would you like to do?')
   end
 
 end
