@@ -15,6 +15,12 @@ describe(Volunteer) do
     end
   end
 
+  describe('#project_id') do
+    it("returns the id of the project the volunteer is assigned to") do
+      volunteer = Volunteer.new({:first_name => "Ilene", :last_name => "Gorski", :project_id => 4})
+      expect(volunteer.project_id()).to eq(4)
+    end
+  end
   describe('#save') do
     it ("saves a volunteer to the database") do
       volunteer.save()
@@ -39,7 +45,8 @@ describe(Volunteer) do
       project = Project.new({:name => "Feed the Children"})
       project.save()
 binding.pry
-      volunteer.add_project(project.id().to_i())
+      volunteer.add_project({:project_id => project.id()})
+      volunteer.save()
       expect(volunteer.project_id()).to(eq(project.id()))
     end
   end
