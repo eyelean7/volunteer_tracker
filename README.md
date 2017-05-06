@@ -1,13 +1,13 @@
 
 # _Volunteer Tracker_
 
-#### _Help children with vocabulary._
+#### _Volunteer database._
 
 #### By _**Ilene Gorski**_
 
 ## Description
 
-_The Vocab app allows the user to enter a word and its definition. The user may navigate to a list of words, clicking on each to reach its page which include the word and its definitions. From that page the user may also add more definitions to the word._
+_The volunteer tracker allows a manager to enter projects and volunteers, and to assign each volunteer to a project._
 
 ## Setup/Installation Requirements
 
@@ -28,7 +28,7 @@ _The Vocab app allows the user to enter a word and its definition. The user may 
 
 ## Known bugs
 
-* _Unable to add volunteers to projects
+* _Unable to add volunteers to projects 
 
 ## Support and contact details
 
