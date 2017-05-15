@@ -28,7 +28,7 @@ _The volunteer tracker allows a manager to enter projects and volunteers, and to
 
 ## Known bugs
 
-* _Unable to add volunteers to projects 
+* _Unable to add volunteers to projects _
 
 ## Support and contact details
 

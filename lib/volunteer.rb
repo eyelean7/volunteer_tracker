@@ -22,7 +22,7 @@ class Volunteer
   end
 
   def add_project(attributes)
-    DB.exec("UPDATE volunteers SET project_id = #{attributes[:project_id]} WHERE id = #{self.id()};")
+    DB.exec("UPDATE volunteers SET project_id = '#{attributes[:project_id]}' WHERE id = #{self.id()};")
   end
 
   def update_volunteer(attributes)

@@ -13,6 +13,7 @@
   <button id="add" type="button" class="btn btn-primary" name="button">Add a volunteer</button>
 
   <form class="add" action="/volunteers" method="post">
+    <input type="hidden" name="project_id" value=@project.id()>
     <div class="form-group">
       <label for="first_name">Volunteer first name</label>
       <input type="text" name="first_name" value="" required>

@@ -44,7 +44,7 @@ describe(Volunteer) do
       volunteer.save()
       project = Project.new({:name => "Feed the Children"})
       project.save()
-binding.pry
+# binding.pry
       volunteer.add_project({:project_id => project.id()})
       volunteer.save()
       expect(volunteer.project_id()).to(eq(project.id()))
