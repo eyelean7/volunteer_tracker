@@ -17,28 +17,20 @@ class Project
     self.name().==(another_project.name()).&(self.id().==(another_project.id()))
   end
 
-  def volunteers
-    list_volunteers = []
-    joined = DB.exec("SELECT * FROM projects_volunteers WHERE project_id = #{self.id};")
-    joined.each() do |joiner|
-      id = joiner['volunteer_id'].to_i()
-      name = Volunteer.find(id).name()
-      list_volunteers.push(Volunteer.new({:first_name => first_name, last_name => last_name, :id => id}))
+
+
+ def volunteers
+    project_volunteers = []
+    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id()};")
+    volunteers.each() do |volunteer|
+      first_name = volunteer.fetch("first_name")
+      last_name = volunteer.fetch("last_name")
+      project_id = volunteer.fetch("project_id").to_i()
+      project_volunteers.push(Volunteer.new({:first_name => first_name, :last_name => last_name, :project_id => project_id, :id => id}))
     end
-    return list_volunteers
+    project_volunteers
   end
 
-  def not_volunteers
-    not_volunteers = []
-    all_volunteers = Volunteer.all()
-    volunteers = self.volunteers()
-    all_volunteers.each() do |volunteer|
-      if not volunteers.include?(volunteer)
-        not_volunteers.push(volunteer)
-      end
-    end
-    return not_volunteers
-  end
 
   def update_project(attributes)
     DB.exec("UPDATE projects SET name = '#{attributes[:name]}' WHERE id = #{self.id()};")

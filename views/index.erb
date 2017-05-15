@@ -4,21 +4,26 @@
   <h3>What would you like to do?</h3>
   <a href="/projects"><button type="button" class="btn btn-primary" name="button">Go to projects page</button></a>
   <a href="/volunteers"><button type="button" class="btn btn-info" name="button">Go to volunteers page</button></a>
-
-  <% if @projects.any? %>
-    <h3>Projects:</h3>
-    <ul>
-      <% @projects.each() do |project| %>
-        <li><%= project.name() %></li>
+  <div class="row">
+    <div class="col-md-4">
+      <% if @projects.any? %>
+        <h3>Projects:</h3>
+        <ul>
+          <% @projects.each() do |project| %>
+            <li><%= project.name() %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
-  <% if @volunteers.any? %>
-    <h1>Volunteers:</h1>
-    <ul>
-      <% @volunteers.each() do |volunteer| %>
-        <li><%= volunteer.name() %></li>
-      <% end %>
-    </ul>
-  <% end %>
+      <% if @volunteers.any? %>
+    </div>
+    <div class="col-md-4">
+      <h3>Volunteers:</h3>
+      <ul>
+        <% @volunteers.each() do |volunteer| %>
+          <li><%= volunteer.name() %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    </div>
+  </div>
 </div>

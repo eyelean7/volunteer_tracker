@@ -37,6 +37,19 @@ end
 
 get('/projects/:id') do
   @project = Project.find(params[:id].to_i())
+  @volunteers = @project.volunteers()
+  erb(:project)
+end
+
+post('/projects/:id') do
+  @project = Project.find(params[:id].to_i())
+  @volunteers = @project.volunteers()
+  first_name = params.fetch("first_name")
+  last_name = params.fetch("last_name")
+  project_id = params.fetch("project_id")
+  volunteer = Volunteer.new({:first_name => first_name, :last_name => last_name, :project_id => project_id, :id => nil})
+  volunteer.save()
+  @volunteers = @project.volunteers()
   erb(:project)
 end
 
@@ -44,19 +57,21 @@ patch('/projects/:id') do
   @project = Project.find(params[:id].to_i())
   @project.update_project({:name => params.fetch("name")})
   @project = Project.find(params[:id].to_i())
+  @volunteers = @project.volunteers()
   erb(:project)
 end
 
-get('project/:id/volunteers') do
+get('/volunteers') do
   @project = Project.find(params[:id].to_i())
   @volunteers = Volunteer.all()
   erb(:volunteers)
 end
 
-post('project/:id/volunteers') do
+post('/volunteers') do
   first_name = params.fetch("first_name")
   last_name = params.fetch("last_name")
   project_id = params.fetch("project_id")
+  @project = Project.find(project_id.to_i())
   volunteer = Volunteer.new({:first_name => first_name, :last_name => last_name, :project_id => project_id, :id => nil})
   volunteer.save()
   @volunteers = Volunteer.all()
