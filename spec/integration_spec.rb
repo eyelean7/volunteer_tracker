@@ -26,7 +26,7 @@ describe('volunteer_tracker', {:type => :feature}) do
     expect(page).to have_content('Project: Feed the Children')
     click_button('Update project name')
     fill_in('name', :with => 'Meals on Wheels')
-    click_button('Submit')
+    click_button('Update Name')
     expect(page).to have_content('Project: Meals on Wheels')
   end
   it "goes to the volunteers page when its button is clicked" do
@@ -41,20 +41,5 @@ describe('volunteer_tracker', {:type => :feature}) do
     click_link('Go Home')
     expect(page).to have_content('What would you like to do?')
   end
-  it "routes to an individual volunteer's page and allows an update or delete" do
-    visit('/volunteers')
-    click_button('Add a volunteer')
-    fill_in('first_name', :with => 'Ilene')
-    fill_in('last_name', :with => 'Gorski')
-    click_button('Submit')
-    click_link('Ilene Gorski')
-    expect(page).to have_content('Volunteer: Ilene Gorski')
-    click_button('Update volunteer name')
-    fill_in('first_name', :with => 'Eileen')
-    fill_in('last_name', :with => 'Gorski')
-    click_button('Submit')
-    expect(page).to have_content('Volunteer: Eileen Gorski')
-    click_button('Delete this Volunteer')
-    expect(page).to have_content('You do not have any volunteers yet.')
-  end
+
 end

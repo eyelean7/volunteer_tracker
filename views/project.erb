@@ -1,61 +1,59 @@
 <div class="container">
   <h1>Project: <%= @project.name() %></h1>
-    <% if @volunteers.any? %>
-      <h3>Volunteers on this Project:</h3>
-        <ul>
-          <% @volunteers.each() do |volunteer| %>
-            <li><%= volunteer.name() %></li>
-          <% end %>
-        </ul>
-    <% end %>
-  <h3>What would you like to do?</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <% if @volunteers.any? %>
+        <h3>Volunteers on this Project:</h3>
+          <ul>
+            <% @volunteers.each() do |volunteer| %>
+              <li><%= volunteer.name() %></li>
+            <% end %>
+          </ul>
+      <% else %>
+      <h3>There are no volunteers assigned to this project.</h3>
+      <% end %>
 
-
-
-  <div class="container">
-
-    <% if @volunteers.any? %>
-      <h3>Volunteer List</h3>
-      <ul>
-        <% @volunteers.each() do |volunteer| %>
-          <a href="volunteers/<%= volunteer.id()%>"><li><%= volunteer.name() %></li></a>
-        <% end %>
-      </ul>
-    <% else %>
-      <h3>You do not have any volunteers yet.</h3>
-    <% end %>
-    <button id="add" type="button" class="btn btn-primary" name="button">Add a volunteer</button>
-
-    <form class="add" action="/projects/<%= @project.id() %>" method="post">
-      <input type="hidden" name="project_id" value='<%= @project.id() %>'>
-      <div class="form-group">
-        <label for="first_name">Volunteer first name</label>
-        <input type="text" name="first_name" value="" required>
-      </div>
-      <div class="form-group">
-        <label for="last_name">Volunteer last name</label>
-        <input type="text" name="last_name" value="" required>
-      </div>
-      <button type="submit" class="btn btn-success" name="button">Submit</button>
-    </form>
-
-    <a href="/"><button type="button" class="btn btn-info" name="button">Go Home</button></a>
-
-  </div>
-
-  <button id="add2" type="button" name="button" class="btn btn-success">Update project name</button>
-  <form class="add2" action="/projects/<%= @project.id() %>" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" name="name" value="">
     </div>
-    <button type="submit" name="button" class="btn btn-warning">Submit</button>
-  </form>
-  <form action="/projects" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="hidden" name="id" value="<%= @project.id() %>">
-    <button type="submit" class="btn btn-danger">Delete this Project</button>
-  </form>
-  <a href="/"><button type="button" class="btn btn-info" name="button">Go Home</button></a>
-</div>
+
+
+
+
+    <div class="col-md-4">
+      <h3>What would you like to do?</h3>
+      <button id="add" type="button" class="btn btn-primary" name="button">Add a volunteer</button><br>
+
+      <form class="add" action="/projects/<%= @project.id() %>" method="post">
+        <input type="hidden" name="project_id" value='<%= @project.id() %>'>
+        <div class="form-group">
+          <label for="first_name">Volunteer first name</label>
+          <input type="text" name="first_name" value="" required>
+        </div>
+        <div class="form-group">
+          <label for="last_name">Volunteer last name</label>
+          <input type="text" name="last_name" value="" required>
+        </div>
+        <button type="submit" class="btn btn-primary" name="button">Submit</button>
+      </form>
+      <button id="add2" type="button" name="button" class="btn btn-success">Update project name</button>
+      <form class="add2" action="/projects/<%= @project.id() %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" value="">
+        </div>
+        <button type="submit" name="button" class="btn btn-success">Update Name</button>
+      </form>
+      <form action="/projects" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="id" value="<%= @project.id() %>">
+        <button type="submit" class="btn btn-danger">Delete this Project</button>
+      </form>
+      <a href="/"><button type="button" class="btn btn-info" name="button">Go Home</button></a>
+
+    </div>
+    <div class="col-md-4">
+
+
+    </div>
+    </div>
+  </div>
